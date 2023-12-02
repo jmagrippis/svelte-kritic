@@ -1,0 +1,136 @@
+@tailwind base;
+
+@layer base {
+	/*
+  Additional "resets" based on Josh's article:
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	body {
+		-webkit-font-smoothing: antialiased;
+		isolation: isolate;
+		display: flex;
+		flex-direction: column;
+	}
+
+	input,
+	button,
+	textarea,
+	select {
+		font: inherit;
+	}
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		overflow-wrap: break-word;
+	}
+
+	:root {
+		--padding-inline: clamp(1rem, 5vw, 3rem);
+		--short-animation-duration: 300ms;
+
+		--brand-hue: 271deg;
+		--accent-hue: 158deg;
+
+		/* light */
+		--foreground-brand-color-light: var(--brand-hue) 10% 10%;
+		--foreground-accent-color-light: var(--accent-hue) 81% 40%;
+
+		--surface-brand-1-color-light: var(--brand-hue) 73% 97%;
+		--surface-brand-2-color-light: var(--brand-hue) 85% 90%;
+		--surface-accent-1-color-light: var(--accent-hue) 85% 90%;
+
+		/* dark */
+		--foreground-brand-color-dark: var(--brand-hue) 100% 97%;
+		--foreground-accent-color-dark: var(--accent-hue) 78% 60%;
+
+		--surface-brand-1-color-dark: var(--brand-hue) 90% 6%;
+		--surface-brand-2-color-dark: var(--brand-hue) 84% 17%;
+		--surface-accent-1-color-dark: var(--accent-hue) 90% 21%;
+	}
+
+	/* light theme setup */
+	:root {
+		color-scheme: light;
+
+		--foreground-brand-color: var(--foreground-brand-color-light);
+		--foreground-accent-color: var(--foreground-accent-color-light);
+
+		--surface-brand-1-color: var(--surface-brand-1-color-light);
+		--surface-brand-2-color: var(--surface-brand-2-color-light);
+		--surface-accent-1-color: var(--surface-accent-1-color-light);
+	}
+
+	/* dark theme setup */
+	[data-theme='dark'] {
+		color-scheme: dark;
+
+		--foreground-brand-color: var(--foreground-brand-color-dark);
+		--foreground-accent-color: var(--foreground-accent-color-dark);
+
+		--surface-brand-1-color: var(--surface-brand-1-color-dark);
+		--surface-brand-2-color: var(--surface-brand-2-color-dark);
+		--surface-accent-1-color: var(--surface-accent-1-color-dark);
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100vh;
+	}
+
+	html {
+		@apply bg-gradient-to-b from-surface-brand-1 from-75% bg-fixed text-lg text-foreground-brand transition-colors dark:to-stone-950;
+	}
+
+	/* SmollCSS Stephanie + Kevin-style breakout grid
+	https://www.youtube.com/watch?v=c13gpBrnGEw */
+	.content-grid,
+	.full-width {
+		--_content-max-width: 70ch;
+		--_breakout-max-width: 90ch;
+
+		--_full-width-size: minmax(var(--padding-inline), 1fr);
+		--_breakout-size: minmax(
+			0,
+			calc((var(--_breakout-max-width) - var(--_content-max-width)) / 2)
+		);
+		--_content-size: min(
+			100% - var(--padding-inline) * 2,
+			var(--_content-max-width)
+		);
+
+		display: grid;
+		grid-template-columns:
+			[full-width-start] var(--_full-width-size)
+			[breakout-start] var(--_breakout-size)
+			[content-start] var(--_content-size) [content-end]
+			var(--_breakout-size) [breakout-end]
+			var(--_full-width-size) [full-width-end];
+
+		> :not(.breakout, .full-width) {
+			grid-column: content;
+		}
+
+		> .breakout {
+			grid-column: breakout;
+		}
+
+		> .full-width {
+			grid-column: full-width;
+		}
+	}
+}
+
+@tailwind components;
+@tailwind utilities;
