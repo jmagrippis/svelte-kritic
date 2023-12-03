@@ -1,5 +1,5 @@
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
+import type {GamesRepo} from '$lib/server/repos/GamesInterface'
+
 declare global {
 	// fresh API just dropped, let's extend Document
 	interface Document {
@@ -13,7 +13,9 @@ declare global {
 
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			gamesRepo: GamesRepo
+		}
 		// interface PageData {}
 		// interface Platform {}
 	}

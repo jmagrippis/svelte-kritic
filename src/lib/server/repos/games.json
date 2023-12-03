@@ -1,0 +1,98 @@
+[
+	{
+		"name": "Baldur's Gate 3",
+		"id": 9136,
+		"tier": "Mighty",
+		"topCriticScore": 96,
+		"firstReleaseDate": "2023-08-03T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "The Legend of Zelda: Tears of the Kingdom",
+		"id": 14343,
+		"tier": "Mighty",
+		"topCriticScore": 96,
+		"firstReleaseDate": "2023-05-12T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Videoverse",
+		"id": 15333,
+		"tier": "Mighty",
+		"topCriticScore": 92,
+		"firstReleaseDate": "2023-08-07T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Resident Evil 4 (2023)",
+		"id": 14200,
+		"tier": "Mighty",
+		"topCriticScore": 92,
+		"firstReleaseDate": "2023-03-24T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Street Fighter 6",
+		"id": 14352,
+		"tier": "Mighty",
+		"topCriticScore": 92,
+		"firstReleaseDate": "2023-06-01T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Super Mario Bros. Wonder",
+		"id": 15123,
+		"tier": "Mighty",
+		"topCriticScore": 91,
+		"firstReleaseDate": "2023-10-20T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Marvel's Spider-Man 2",
+		"id": 15052,
+		"tier": "Mighty",
+		"topCriticScore": 91,
+		"firstReleaseDate": "2023-10-20T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Turbo Overkill",
+		"id": 13051,
+		"tier": "Mighty",
+		"topCriticScore": 91,
+		"firstReleaseDate": "2023-07-18T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Slay the Princess",
+		"id": 15687,
+		"tier": "Mighty",
+		"topCriticScore": 90,
+		"firstReleaseDate": "2023-10-20T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Jack Jeanne",
+		"id": 15043,
+		"tier": "Mighty",
+		"topCriticScore": 90,
+		"firstReleaseDate": "2023-06-15T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Dave the Diver",
+		"id": 15151,
+		"tier": "Mighty",
+		"topCriticScore": 90,
+		"firstReleaseDate": "2023-06-28T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	},
+	{
+		"name": "Sea of Stars",
+		"id": 15003,
+		"tier": "Mighty",
+		"topCriticScore": 89,
+		"firstReleaseDate": "2023-08-29T00:00:00.000Z",
+		"images": {"box": "[Object]", "banner": "[Object]"}
+	}
+]
