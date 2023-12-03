@@ -16,40 +16,22 @@
 			const title = gameElement.querySelector('h3')
 
 			if (heroImage) {
-				heroImage.style.viewTransitionName = 'hero'
+				heroImage.style.viewTransitionName = `hero-${id}`
 			}
 			if (title) {
-				title.style.viewTransitionName = 'game-title'
-			}
-		}
-	}
-	const cleanupPreviousHero = () => {
-		const previousHero = document.querySelector('[data-hero]')
-
-		if (previousHero) {
-			previousHero.removeAttribute('data-hero')
-			const heroImage = previousHero.querySelector('img')
-			const title = previousHero.querySelector('h3')
-
-			if (heroImage) {
-				heroImage.style.viewTransitionName = ''
-			}
-			if (title) {
-				title.style.viewTransitionName = ''
+				title.style.viewTransitionName = `title-${id}`
 			}
 		}
 	}
 
 	beforeNavigate((navigation) => {
 		if (navigation.to?.route.id === '/game/[id]' && navigation.to?.params?.id) {
-			cleanupPreviousHero()
-
 			const elementId = navigation.to.params.id
 			setupTransitions(elementId)
 		}
 	})
 
-	afterNavigate(async (navigation) => {
+	afterNavigate((navigation) => {
 		if (
 			navigation.from?.route.id === '/game/[id]' &&
 			navigation.from?.params?.id
@@ -73,6 +55,8 @@
 						src={images.box.og}
 						alt={`Box art for ${name}`}
 						class="h-fit rounded-t"
+						width={480}
+						height={720}
 					/>
 				</a>
 				<div>
@@ -87,7 +71,7 @@
 	</ul>
 </main>
 
-<style>
+<style lang="postcss">
 	.games-grid {
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
 		grid-auto-rows: auto auto auto;
@@ -97,6 +81,10 @@
 	.game {
 		grid-row: span 3;
 		grid-template-rows: subgrid;
+
+		& img {
+			aspect-ratio: 2 / 3;
+		}
 
 		& > :not(a:has(img)) {
 			@apply px-4;
