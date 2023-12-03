@@ -17,10 +17,13 @@
 						src={images.box.og}
 						alt={`Box art for ${name}`}
 						class="h-fit rounded-t"
+						style={`view-transition-name: hero-${id}`}
 					/>
 				</a>
 				<div>
-					<h3 class="font-bold">{name}</h3>
+					<h3 class="font-bold" style={`view-transition-name: title-${id}`}>
+						{name}
+					</h3>
 					<p class="italic">{dateFormat.format(firstReleaseDate)}</p>
 				</div>
 				<div class="text-3xl">{tier}: {topCriticScore}</div>
