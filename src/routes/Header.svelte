@@ -1,17 +1,26 @@
 <script lang="ts">
 	import {page} from '$app/stores'
+	import kritic from '$lib/images/svelte-kritic.png?enhanced&w=64&img'
 	import ThemeToggleIcon from './ThemeToggleIcon.svelte'
 
 	const activePageClasses =
 		'underline decoration-foreground-accent decoration-dashed decoration-2'
 </script>
 
-<header class="bg-surface-2 mb-2">
-	<nav class="container flex justify-between px-2 py-4">
+<header class="bg-surface-2 sticky top-0 mb-2">
+	<nav class="flex items-center justify-between px-2 py-4">
 		<a
 			href="/"
-			class={`font-bold ${$page.url.pathname === '/' ? activePageClasses : ''}`}
-			>SvelteKritic</a
+			class={`flex items-center gap-4 font-bold ${
+				$page.url.pathname === '/' ? activePageClasses : ''
+			}`}
+		>
+			<enhanced:img
+				class="w-6"
+				src={kritic}
+				alt="The Kritic, SvelteKritic’s mascot"
+			/>
+			<span>SvelteKritic</span></a
 		>
 		<div class="flex gap-4">
 			<ul class="flex gap-4">

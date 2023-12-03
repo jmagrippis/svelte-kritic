@@ -16,6 +16,8 @@
 		isolation: isolate;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100vh;
 	}
 
 	input,
@@ -80,13 +82,6 @@
 		--surface-brand-1-color: var(--surface-brand-1-color-dark);
 		--surface-brand-2-color: var(--surface-brand-2-color-dark);
 		--surface-accent-1-color: var(--surface-accent-1-color-dark);
-	}
-
-	body {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		min-height: 100vh;
 	}
 
 	html {

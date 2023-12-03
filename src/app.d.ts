@@ -8,6 +8,8 @@ declare global {
 	interface Window {
 		toggleTheme?(): void
 	}
+	// for enhanced images with query params such as w=64
+	declare module '*&img'
 
 	namespace App {
 		// interface Error {}
