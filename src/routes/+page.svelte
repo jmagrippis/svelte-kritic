@@ -10,13 +10,15 @@
 <main class="content-grid grow gap-y-4 pt-[5vh] text-lg lg:gap-y-8">
 	<h2 class="breakout text-4xl font-bold">Hall of Fame 2023</h2>
 	<ul class="breakout games-grid grid grid-flow-dense gap-4">
-		{#each data.games as { name, tier, topCriticScore, images, firstReleaseDate }}
+		{#each data.games as { id, name, tier, topCriticScore, images, firstReleaseDate }}
 			<li class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4">
-				<img
-					src={images.box.og}
-					alt={`Box art for ${name}`}
-					class="h-fit rounded-t"
-				/>
+				<a href={`/game/${id}`}>
+					<img
+						src={images.box.og}
+						alt={`Box art for ${name}`}
+						class="h-fit rounded-t"
+					/>
+				</a>
 				<div>
 					<h3 class="font-bold">{name}</h3>
 					<p class="italic">{dateFormat.format(firstReleaseDate)}</p>
@@ -38,7 +40,7 @@
 		grid-row: span 3;
 		grid-template-rows: subgrid;
 
-		& > :not(img) {
+		& > :not(a:has(img)) {
 			@apply px-4;
 		}
 	}

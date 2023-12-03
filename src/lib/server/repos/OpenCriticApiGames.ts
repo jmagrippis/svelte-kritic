@@ -1,6 +1,6 @@
 import {RAPID_API_KEY} from '$env/static/private'
 import {PUBLIC_OPEN_CRITIC_RAPID_API_HOST} from '$env/static/public'
-import type {GameImageSet, GamesRepo, Tier} from './GamesInterface'
+import type {Game, GameImageSet, GamesRepo, Tier} from './GamesInterface'
 
 type OpenCriticGame = {
 	id: number
@@ -13,7 +13,9 @@ type OpenCriticGame = {
 		box: GameImageSet
 		banner: GameImageSet
 	}
+	description: string
 }
+type HallOfFamePartial = Omit<OpenCriticGame, 'description'>
 
 export class OpenCriticApiGames implements GamesRepo {
 	#baseUrl = 'https://opencritic-api.p.rapidapi.com'
@@ -22,6 +24,26 @@ export class OpenCriticApiGames implements GamesRepo {
 	#openCriticRapidHost = PUBLIC_OPEN_CRITIC_RAPID_API_HOST
 
 	#deriveAbsoluteImageUrl = (path: string) => `${this.#imageBaseUrl}/${path}`
+
+	#mapOpenCriticGameToGame = ({
+		firstReleaseDate,
+		images,
+		...restProps
+	}: HallOfFamePartial | OpenCriticGame) => ({
+		...restProps,
+		firstReleaseDate: new Date(firstReleaseDate),
+		images: {
+			box: {
+				og: this.#deriveAbsoluteImageUrl(images.box.og),
+				sm: this.#deriveAbsoluteImageUrl(images.box.sm),
+			},
+			banner: {
+				og: this.#deriveAbsoluteImageUrl(images.banner.og),
+				sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
+			},
+		},
+	})
+
 	async getHallOfFame(year: number) {
 		const url = `${this.#baseUrl}/game/hall-of-fame/${year}`
 
@@ -33,21 +55,28 @@ export class OpenCriticApiGames implements GamesRepo {
 			},
 		})
 
-		const json: OpenCriticGame[] = await response.json()
+		const json: HallOfFamePartial[] = await response.json()
 
-		return json.map(({firstReleaseDate, images, ...restProps}) => ({
-			...restProps,
-			firstReleaseDate: new Date(firstReleaseDate),
-			images: {
-				box: {
-					og: this.#deriveAbsoluteImageUrl(images.box.og),
-					sm: this.#deriveAbsoluteImageUrl(images.box.sm),
-				},
-				banner: {
-					og: this.#deriveAbsoluteImageUrl(images.banner.og),
-					sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-				},
+		return json.map(this.#mapOpenCriticGameToGame)
+	}
+
+	async getGame(id: number | string) {
+		const url = `${this.#baseUrl}/game/${id}`
+
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': this.#rapidApiKey,
+				'X-RapidAPI-Host': this.#openCriticRapidHost,
 			},
-		}))
+		})
+
+		if (response.status === 404) {
+			return null
+		}
+
+		const json: OpenCriticGame = await response.json()
+
+		return this.#mapOpenCriticGameToGame(json) as Game
 	}
 }

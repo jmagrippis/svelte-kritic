@@ -7,7 +7,7 @@
 		'underline decoration-foreground-accent decoration-dashed decoration-2'
 </script>
 
-<header class="bg-surface-2 sticky top-0 mb-2">
+<header class="z-1 sticky top-0 mb-2 bg-surface-brand-1/80 backdrop-blur">
 	<nav class="flex items-center justify-between px-2 py-4">
 		<a
 			href="/"

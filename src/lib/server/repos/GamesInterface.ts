@@ -7,7 +7,6 @@ export type GameImageSet = {
 export type Game = {
 	id: number
 	name: string
-	url: string
 	firstReleaseDate: Date
 	topCriticScore: number
 	tier: Tier
@@ -15,8 +14,11 @@ export type Game = {
 		box: GameImageSet
 		banner: GameImageSet
 	}
+	description: string
 }
+export type HallOfFameGamePartial = Omit<Game, 'description'>
 
 export interface GamesRepo {
-	getHallOfFame(year: number): Promise<Game[]>
+	getHallOfFame(year: number): Promise<HallOfFameGamePartial[]>
+	getGame(id: number | string): Promise<Game | null>
 }
