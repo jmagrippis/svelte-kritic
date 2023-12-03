@@ -16,7 +16,7 @@
 			}`}
 		>
 			<enhanced:img
-				class="w-6"
+				class={`w-6 ${$page.url.pathname !== '/' ? 'saturate-50' : ''}`}
 				src={kritic}
 				alt="The Kritic, SvelteKritic’s mascot"
 			/>
@@ -41,6 +41,7 @@
 					window.toggleTheme && window.toggleTheme()
 				}}
 			>
+				<span class="sr-only">toggle theme</span>
 				<ThemeToggleIcon className="w-6" />
 			</button>
 		</div>

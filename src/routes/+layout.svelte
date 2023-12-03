@@ -31,6 +31,12 @@
 			document.startViewTransition &&
 			navigation.from?.url.href !== navigation.to?.url.href
 		) {
+			if (navigation.delta && navigation.delta < 0) {
+				document.documentElement.dataset.back = 'true'
+			} else {
+				document.documentElement.removeAttribute('data-back')
+			}
+
 			return new Promise((resolve) => {
 				document.startViewTransition &&
 					document.startViewTransition(async () => {
@@ -56,27 +62,3 @@
 <Header />
 <slot />
 <Footer />
-
-<style>
-	@keyframes fade-out {
-		to {
-			opacity: 0;
-		}
-	}
-
-	@keyframes slide-from-right {
-		from {
-			transform: translateX(100%);
-		}
-	}
-
-	:root::view-transition-old(root) {
-		pointer-events: none;
-		animation: 300ms ease-out both fade-out;
-	}
-
-	:root::view-transition-new(root) {
-		pointer-events: none;
-		animation: 300ms ease-out both slide-from-right;
-	}
-</style>
