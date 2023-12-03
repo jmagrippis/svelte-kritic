@@ -15,12 +15,12 @@
 			src={images.box.og}
 			alt={`Box art for ${name}`}
 			class="h-fit justify-self-center rounded"
-			style={`view-transition-name: hero-${id}`}
+			style="view-transition-name: hero"
 		/>
 		<div class="flex flex-col gap-4 lg:col-span-2 lg:gap-8">
 			<h1
 				class="breakout text-4xl font-bold"
-				style={`view-transition-name: title-${id}`}
+				style="view-transition-name: game-title"
 			>
 				{name}
 			</h1>
