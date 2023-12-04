@@ -14,7 +14,7 @@
 		<img
 			src={images.box.og}
 			alt={`Box art for ${name}`}
-			class="h-fit justify-self-center rounded"
+			class="aspect-game-box justify-self-center rounded"
 			style={`view-transition-name: hero-${id}`}
 		/>
 		<div class="flex flex-col gap-4 lg:col-span-2 lg:gap-8">

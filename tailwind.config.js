@@ -29,6 +29,9 @@ const config = {
 					},
 				},
 			},
+			aspectRatio: {
+				'game-box': '2 / 3',
+			},
 		},
 	},
 	plugins: [forms],

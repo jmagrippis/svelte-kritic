@@ -54,7 +54,7 @@
 					<img
 						src={images.box.og}
 						alt={`Box art for ${name}`}
-						class="h-fit rounded-t"
+						class="aspect-game-box rounded-t"
 						width={480}
 						height={720}
 					/>
@@ -75,16 +75,11 @@
 	.games-grid {
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
 		grid-auto-rows: auto auto auto;
-		container-type: inline-size;
 	}
 
 	.game {
 		grid-row: span 3;
 		grid-template-rows: subgrid;
-
-		& img {
-			aspect-ratio: 2 / 3;
-		}
 
 		& > :not(a:has(img)) {
 			@apply px-4;
