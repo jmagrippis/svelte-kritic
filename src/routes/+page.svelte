@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {afterNavigate, beforeNavigate} from '$app/navigation'
+	import TierScore from '$lib/components/TierScore.svelte'
 
 	export let data
 
@@ -59,13 +60,13 @@
 						height={720}
 					/>
 				</a>
-				<div>
+				<div class="px-4">
 					<h3 class="font-bold">
 						{name}
 					</h3>
 					<p class="italic">{dateFormat.format(firstReleaseDate)}</p>
 				</div>
-				<div class="text-3xl">{tier}: {topCriticScore}</div>
+				<TierScore class="px-4" {tier} score={topCriticScore} />
 			</li>
 		{/each}
 	</ul>
@@ -80,9 +81,5 @@
 	.game {
 		grid-row: span 3;
 		grid-template-rows: subgrid;
-
-		& > :not(a:has(img)) {
-			@apply px-4;
-		}
 	}
 </style>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import TierScore from '$lib/components/TierScore.svelte'
+
 	export let data
 
 	const dateFormat = Intl.DateTimeFormat('en-GB', {
@@ -27,9 +29,7 @@
 			<p class="italic">
 				First released on {dateFormat.format(firstReleaseDate)}
 			</p>
-			<div class="text-3xl">
-				{tier}: {topCriticScore.toFixed(2)}
-			</div>
+			<TierScore {tier} score={topCriticScore.toFixed(2)} />
 		</div>
 		<p class="text-xl leading-relaxed lg:col-span-3">{description}</p>
 	</article>
