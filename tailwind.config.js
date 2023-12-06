@@ -13,8 +13,8 @@ const config = {
 		},
 		extend: {
 			colors: {
-				primary: colors.emerald,
-				secondary: colors.purple,
+				primary: colors.purple,
+				secondary: colors.emerald,
 				foreground: {
 					brand: withAlphaValue('foreground-brand-color'),
 					accent: withAlphaValue('foreground-accent-color'),
