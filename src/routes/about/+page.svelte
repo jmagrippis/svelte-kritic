@@ -3,9 +3,7 @@
 	import YouTubeLink from '$lib/components/YouTubeLink.svelte'
 </script>
 
-<main
-	class="content-grid mb-4 gap-y-4 pt-[5vh] text-xl lg:mb-8 lg:gap-y-8 lg:pt-[10vh] lg:text-2xl"
->
+<main class="content-grid gap-y-4 text-xl lg:gap-y-8 lg:text-2xl">
 	<h1 class="text-4xl font-bold lg:text-6xl">About</h1>
 	<p>
 		SvelteKritic is the <OutboundLink href="https://kit.svelte.dev/"
