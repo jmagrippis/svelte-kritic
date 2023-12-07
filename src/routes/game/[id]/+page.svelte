@@ -17,13 +17,9 @@
 			src={images.box.og}
 			alt={`Box art for ${name}`}
 			class="aspect-game-box justify-self-center rounded"
-			style={`view-transition-name: hero-${id}`}
 		/>
 		<div class="flex flex-col gap-4 lg:col-span-2 lg:gap-8">
-			<h1
-				class="breakout text-4xl font-bold"
-				style={`view-transition-name: title-${id}`}
-			>
+			<h1 class="breakout text-4xl font-bold">
 				{name}
 			</h1>
 			<p class="italic">
