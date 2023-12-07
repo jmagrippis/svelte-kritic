@@ -11,7 +11,7 @@
 		data.game)
 </script>
 
-<main class="content-grid grow gap-y-4 pt-[5vh] text-lg lg:gap-y-8">
+<main class="content-grid grow gap-y-4 text-lg lg:gap-y-8">
 	<article class="breakout grid gap-8 lg:grid-cols-3">
 		<img
 			src={images.box.og}

@@ -5,7 +5,9 @@
 	import PulsingHeart from './PulsingHeart.svelte'
 </script>
 
-<footer class="bg-surface-1 flex items-center justify-center gap-2 py-2">
+<footer
+	class="bg-surface-1 mt-[5vh] flex items-center justify-center gap-2 py-2"
+>
 	<div class="flex shrink-0 items-center justify-center gap-2">
 		Made with
 		<PulsingHeart />
