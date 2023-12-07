@@ -1,5 +1,4 @@
 <script lang="ts">
-	import {afterNavigate, beforeNavigate} from '$app/navigation'
 	import TierScore from '$lib/components/TierScore.svelte'
 
 	export let data
@@ -7,39 +6,6 @@
 	const dateFormat = Intl.DateTimeFormat('en-GB', {
 		month: 'long',
 		day: 'numeric',
-	})
-
-	const setupTransitions = (id: string) => {
-		const gameElement = document.getElementById(`game-${id}`)
-		if (gameElement) {
-			gameElement.dataset.hero = 'true'
-			const heroImage = gameElement.querySelector('img')
-			const title = gameElement.querySelector('h3')
-
-			if (heroImage) {
-				heroImage.style.viewTransitionName = `hero-${id}`
-			}
-			if (title) {
-				title.style.viewTransitionName = `title-${id}`
-			}
-		}
-	}
-
-	beforeNavigate((navigation) => {
-		if (navigation.to?.route.id === '/game/[id]' && navigation.to?.params?.id) {
-			const elementId = navigation.to.params.id
-			setupTransitions(elementId)
-		}
-	})
-
-	afterNavigate((navigation) => {
-		if (
-			navigation.from?.route.id === '/game/[id]' &&
-			navigation.from?.params?.id
-		) {
-			const elementId = navigation.from.params.id
-			setupTransitions(elementId)
-		}
 	})
 </script>
 
@@ -49,7 +15,7 @@
 		{#each data.games as { id, name, tier, topCriticScore, images, firstReleaseDate }}
 			<li
 				id={`game-${id}`}
-				class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4"
+				class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 hover:brightness-125 hover:saturate-[75%]"
 			>
 				<a href={`/game/${id}`}>
 					<img
