@@ -14,7 +14,6 @@
 	<ul class="breakout games-grid grid grid-flow-dense gap-4">
 		{#each data.games as { id, name, tier, topCriticScore, images, firstReleaseDate }}
 			<li
-				id={`game-${id}`}
 				class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 hover:brightness-125 hover:saturate-[75%]"
 			>
 				<a href={`/game/${id}`}>
@@ -24,10 +23,11 @@
 						class="aspect-game-box rounded-t"
 						width={480}
 						height={720}
+						style={`view-transition-name: hero-${id};`}
 					/>
 				</a>
 				<div class="px-4">
-					<h3 class="font-bold">
+					<h3 class="font-bold" style={`view-transition-name: title-${id}`}>
 						{name}
 					</h3>
 					<p class="italic">{dateFormat.format(firstReleaseDate)}</p>

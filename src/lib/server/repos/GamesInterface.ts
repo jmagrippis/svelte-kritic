@@ -4,19 +4,27 @@ export type GameImageSet = {
 	og: string
 	sm: string
 }
+
+export type Images = {
+	box: GameImageSet
+	banner: GameImageSet
+	masthead: GameImageSet
+}
+
 export type Game = {
 	id: number
 	name: string
 	firstReleaseDate: Date
 	topCriticScore: number
 	tier: Tier
-	images: {
-		box: GameImageSet
-		banner: GameImageSet
-	}
+	images: Images
 	description: string
 }
-export type HallOfFameGamePartial = Omit<Game, 'description'>
+export type HallOfFameImages = Pick<Images, 'box' | 'banner'>
+
+export type HallOfFameGamePartial = Omit<Game, 'description' | 'images'> & {
+	images: HallOfFameImages
+}
 
 export interface GamesRepo {
 	getHallOfFame(year: number): Promise<HallOfFameGamePartial[]>

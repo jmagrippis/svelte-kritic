@@ -12,6 +12,7 @@ type OpenCriticGame = {
 	images: {
 		box: GameImageSet
 		banner: GameImageSet
+		masthead: GameImageSet | null
 	}
 	description: string
 }
@@ -41,6 +42,12 @@ export class OpenCriticApiGames implements GamesRepo {
 				og: this.#deriveAbsoluteImageUrl(images.banner.og),
 				sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
 			},
+			masthead: images.masthead
+				? {
+						og: this.#deriveAbsoluteImageUrl(images.banner.og),
+						sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
+				  }
+				: null,
 		},
 	})
 
