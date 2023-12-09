@@ -31,6 +31,12 @@
 			document.startViewTransition &&
 			navigation.from?.url.href !== navigation.to?.url.href
 		) {
+			if (navigation.delta && navigation.delta < 0) {
+				document.documentElement.dataset.back = 'true'
+			} else {
+				document.documentElement.removeAttribute('data-back')
+			}
+
 			return new Promise((resolve) => {
 				document.startViewTransition &&
 					document.startViewTransition(async () => {

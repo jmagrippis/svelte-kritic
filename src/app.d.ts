@@ -9,9 +9,6 @@ declare global {
 		toggleTheme?(): void
 	}
 
-	interface CSSStyleDeclaration {
-		viewTransitionName?: string
-	}
 	// for enhanced images with query params such as w=64
 	declare module '*&img'
 
