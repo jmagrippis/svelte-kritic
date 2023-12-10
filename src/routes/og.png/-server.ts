@@ -1,3 +1,8 @@
+// problems with deploying this sadly
+// Error: The Edge Function "fn" is referencing unsupported modules:
+// - index.js: vc-blob-asset:./noto-sans-v27-latin-regular.ttf
+// TODO: raise issue?
+
 import type {RequestHandler} from '@sveltejs/kit'
 import {ImageResponse} from '@vercel/og'
 
