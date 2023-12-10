@@ -46,7 +46,7 @@ export class OpenCriticApiGames implements GamesRepo {
 				? {
 						og: this.#deriveAbsoluteImageUrl(images.banner.og),
 						sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-				  }
+					}
 				: null,
 		},
 	})
