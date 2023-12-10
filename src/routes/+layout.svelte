@@ -13,12 +13,16 @@
 		title: 'SvelteKritic',
 		description:
 			'A place to query the OpenCritic API, with that sweet SvelteKit UX 🚀',
+		ogImageUrl: '/og.png',
 	}
 
 	$: title = $page.data.meta?.title
 		? `${$page.data.meta?.title} 👾 SvelteKritic`
 		: defaultMeta.title
 	$: description = $page.data.meta?.description ?? defaultMeta.description
+	$: ogImageUrl = `${$page.url.origin}${
+		$page.data.meta?.ogImageUrl ?? defaultMeta.ogImageUrl
+	}`
 
 	onMount(() => {
 		// crucially removes the "pointer-events-none" class
@@ -57,6 +61,9 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="SvelteKritic" />
 	<meta property="og:url" content={$page.url.href} />
+
+	<meta property="og:image" content={ogImageUrl} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Header />
