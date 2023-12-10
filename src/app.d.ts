@@ -5,6 +5,9 @@ declare global {
 	interface Document {
 		startViewTransition?(callback: () => Promise<void>): void
 	}
+	interface CSSStyleDeclaration {
+		viewTransitionName?: string
+	}
 	interface Window {
 		toggleTheme?(): void
 	}
