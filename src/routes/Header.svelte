@@ -5,6 +5,8 @@
 
 	const activePageClasses =
 		'underline decoration-foreground-accent decoration-dashed decoration-2'
+
+	$: pageTitleElement = $page.url.pathname === '/' ? 'h1' : 'span'
 </script>
 
 <header class="sticky top-0 z-50 mb-[5vh] bg-surface-brand-1/80 backdrop-blur">
@@ -20,7 +22,9 @@
 				src={kritic}
 				alt="The Kritic, SvelteKritic’s mascot"
 			/>
-			<span>SvelteKritic</span></a
+			<svelte:element this={pageTitleElement} class="inline-block"
+				>SvelteKritic</svelte:element
+			></a
 		>
 		<div class="flex gap-4">
 			<ul class="flex gap-4">
