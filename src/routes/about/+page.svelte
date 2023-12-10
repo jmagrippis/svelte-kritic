@@ -16,10 +16,10 @@
 	</p>
 	<p>
 		Above all, SvelteKritic is a demo app meant to accompany Johnny’s videos on
-		the <YouTubeLink href="https://www.youtube.com/@johnnifytech"
+		the <YouTubeLink href="https://www.youtube.com/watch?v=qcgGJ0J3yOA"
 			>View Transitions API</YouTubeLink
 		>! Give your web apps that
-		<YouTubeLink href="https://www.youtube.com/@johnnifytech"
+		<YouTubeLink href="https://www.youtube.com/watch?v=suuxXrMs5P4"
 			>App-Like feel</YouTubeLink
 		> 🚀, and delight your users!
 	</p>
