@@ -30,10 +30,18 @@
 			<ul class="flex gap-4">
 				<li>
 					<a
+						href="/tierlists/2023"
+						class={$page.url.pathname.startsWith('/about')
+							? activePageClasses
+							: undefined}>Tier Lists</a
+					>
+				</li>
+				<li>
+					<a
 						href="/about"
 						class={$page.url.pathname.startsWith('/about')
 							? activePageClasses
-							: undefined}>about</a
+							: undefined}>About</a
 					>
 				</li>
 			</ul>

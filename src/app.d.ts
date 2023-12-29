@@ -1,4 +1,5 @@
 import type {GamesRepo} from '$lib/server/repos/GamesInterface'
+import type {TierListsRepo} from '$lib/server/repos/tierLists/TierListsInterface'
 
 declare global {
 	// fresh API just dropped, let's extend Document
@@ -19,6 +20,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			gamesRepo: GamesRepo
+			tierListsRepo: TierListsRepo
 		}
 		// interface PageData {}
 		// interface Platform {}

@@ -33,22 +33,50 @@ export class OpenCriticApiGames implements GamesRepo {
 	}: HallOfFamePartial | OpenCriticGame) => ({
 		...restProps,
 		firstReleaseDate: new Date(firstReleaseDate),
-		images: {
-			box: {
-				og: this.#deriveAbsoluteImageUrl(images.box.og),
-				sm: this.#deriveAbsoluteImageUrl(images.box.sm),
-			},
-			banner: {
-				og: this.#deriveAbsoluteImageUrl(images.banner.og),
-				sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-			},
-			masthead: images.masthead
-				? {
-						og: this.#deriveAbsoluteImageUrl(images.banner.og),
-						sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-					}
-				: null,
-		},
+		images: images
+			? {
+					box: images.box
+						? {
+								og: this.#deriveAbsoluteImageUrl(images.box.og),
+								sm: this.#deriveAbsoluteImageUrl(images.box.sm),
+							}
+						: {
+								og: 'https://placehold.co/480x720',
+								sm: 'https://placehold.co/480x720',
+							},
+					banner: images.banner
+						? {
+								og: this.#deriveAbsoluteImageUrl(images.banner.og),
+								sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
+							}
+						: {
+								og: 'https://placehold.co/600x400',
+								sm: 'https://placehold.co/600x400',
+							},
+					masthead: images.masthead
+						? {
+								og: this.#deriveAbsoluteImageUrl(images.masthead.og),
+								sm: this.#deriveAbsoluteImageUrl(images.masthead.sm),
+							}
+						: {
+								og: 'https://placehold.co/600x400',
+								sm: 'https://placehold.co/600x400',
+							},
+				}
+			: {
+					box: {
+						og: 'https://placehold.co/600x400',
+						sm: 'https://placehold.co/600x400',
+					},
+					banner: {
+						og: 'https://placehold.co/600x400',
+						sm: 'https://placehold.co/600x400',
+					},
+					masthead: {
+						og: 'https://placehold.co/600x400',
+						sm: 'https://placehold.co/600x400',
+					},
+				},
 	})
 
 	async getHallOfFame(year: number) {

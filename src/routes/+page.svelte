@@ -1,13 +1,9 @@
 <script lang="ts">
 	import {afterNavigate, beforeNavigate} from '$app/navigation'
 	import TierScore from '$lib/components/TierScore.svelte'
+	import {dateFormat} from '$lib/dateFormat.js'
 
 	export let data
-
-	const dateFormat = Intl.DateTimeFormat('en-GB', {
-		month: 'long',
-		day: 'numeric',
-	})
 
 	const setupTransitions = (id: string) => {
 		const gameCard = document.getElementById(id)
