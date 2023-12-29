@@ -15,18 +15,25 @@
 		{#if tierWithGames.games.length > 0}
 			<h2 class="text-3xl font-bold">{tierWithGames.name} Tier</h2>
 			<ul class="breakout games-grid grid grid-flow-dense gap-4">
-				{#each tierWithGames.games as { id, name, tier, image, startedPlayingAt }}
+				{#each tierWithGames.games as { id, name, images, startedPlayingAt }}
 					<li
 						id={`${id}`}
-						class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 hover:brightness-125 hover:saturate-[75%]"
+						class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 @container hover:brightness-125 hover:saturate-[75%]"
 					>
 						<a href={`/game/${id}`}>
 							<img
-								src={image}
+								src={images.box}
 								alt={`Box art for ${name}`}
-								class="aspect-game-box rounded-t"
+								class="aspect-game-box rounded-t @sm:hidden"
 								width={480}
 								height={720}
+							/>
+							<img
+								src={images.banner}
+								alt={`banner art for ${name}`}
+								class="hidden aspect-game-banner w-full rounded-t @sm:block"
+								width={600}
+								height={280}
 							/>
 						</a>
 						<div class="px-4">

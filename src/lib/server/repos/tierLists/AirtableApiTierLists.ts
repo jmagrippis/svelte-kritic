@@ -16,7 +16,8 @@ export type AirtableGame = {
 	Overclocked: boolean
 	Tier: Tier
 	Name: string
-	Image: string
+	'Image Box': string
+	'Image Banner': string
 }
 
 export class AirtableApiTierLists implements TierListsRepo {
@@ -28,7 +29,18 @@ export class AirtableApiTierLists implements TierListsRepo {
 	#airtableGameToTierListGame = (airtableGame: AirtableGame): TierListGame => ({
 		id: airtableGame.OpenCriticId,
 		name: airtableGame.Name,
-		image: airtableGame.Image ?? 'https://placehold.co/480x720',
+		images: {
+			box:
+				airtableGame['Image Box'] ??
+				`https://placehold.co/480x720?text=${encodeURIComponent(
+					airtableGame.Name,
+				)}`,
+			banner:
+				airtableGame['Image Banner'] ??
+				`https://placehold.co/460x215?text=${encodeURIComponent(
+					airtableGame.Name,
+				)}`,
+		},
 		platform: airtableGame.Platform,
 		startedPlayingAt: airtableGame['Started Playing At'],
 		thoughts: airtableGame.Thoughts,
