@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({locals, params, setHeaders}) => {
 	}
 
 	setHeaders({
-		'Cache-Control': `private, max-age=${ONE_DAY_IN_SECONDS}`,
+		'Cache-Control': `public, max-age=${ONE_DAY_IN_SECONDS}`,
 	})
 
 	return {game, meta: {title: game.name}}

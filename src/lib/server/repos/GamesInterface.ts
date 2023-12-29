@@ -6,9 +6,9 @@ export type GameImageSet = {
 }
 
 export type Images = {
-	box: GameImageSet
-	banner: GameImageSet
-	masthead: GameImageSet
+	box: string
+	banner: string
+	masthead: string
 }
 
 export type Game = {

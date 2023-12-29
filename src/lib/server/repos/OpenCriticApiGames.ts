@@ -10,8 +10,8 @@ type OpenCriticGame = {
 	topCriticScore: number
 	tier: Tier
 	images: {
-		box: GameImageSet
-		banner: GameImageSet
+		box: GameImageSet | null
+		banner: GameImageSet | null
 		masthead: GameImageSet | null
 	}
 	description: string
@@ -34,20 +34,21 @@ export class OpenCriticApiGames implements GamesRepo {
 		...restProps,
 		firstReleaseDate: new Date(firstReleaseDate),
 		images: {
-			box: {
-				og: this.#deriveAbsoluteImageUrl(images.box.og),
-				sm: this.#deriveAbsoluteImageUrl(images.box.sm),
-			},
-			banner: {
-				og: this.#deriveAbsoluteImageUrl(images.banner.og),
-				sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-			},
-			masthead: images.masthead
-				? {
-						og: this.#deriveAbsoluteImageUrl(images.banner.og),
-						sm: this.#deriveAbsoluteImageUrl(images.banner.sm),
-					}
-				: null,
+			box: images?.box?.og
+				? this.#deriveAbsoluteImageUrl(images.box.og)
+				: `https://placehold.co/480x720?text=${encodeURIComponent(
+						restProps.name,
+					)}`,
+			banner: images?.banner?.og
+				? this.#deriveAbsoluteImageUrl(images.banner.og)
+				: `https://placehold.co/460x215?text=${encodeURIComponent(
+						restProps.name,
+					)}`,
+			masthead: images?.masthead?.og
+				? this.#deriveAbsoluteImageUrl(images.masthead.og)
+				: `https://placehold.co/1441x811?text=${encodeURIComponent(
+						restProps.name,
+					)}`,
 		},
 	})
 
@@ -80,6 +81,9 @@ export class OpenCriticApiGames implements GamesRepo {
 
 		if (response.status === 404) {
 			return null
+		}
+		if (!response.ok) {
+			throw new Error('error hitting OpenCritic API')
 		}
 
 		const json: OpenCriticGame = await response.json()
