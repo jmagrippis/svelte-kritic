@@ -44,7 +44,7 @@
 			>
 				<a href={`/game/${id}`}>
 					<img
-						src={images.box.og}
+						src={images.box}
 						alt={`Box art for ${name}`}
 						class="aspect-game-box rounded-t"
 						width={480}

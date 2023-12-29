@@ -14,7 +14,7 @@
 <main class="content-grid grow gap-y-4 text-lg lg:gap-y-8">
 	<article class="breakout grid gap-8 lg:grid-cols-3">
 		<img
-			src={images.box.og}
+			src={images.box}
 			alt={`Box art for ${name}`}
 			class="aspect-game-box justify-self-center rounded"
 			style={`view-transition-name: hero-${id};`}
