@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({locals, params, setHeaders}) => {
 	const game = await locals.gamesRepo.getGame(params.id)
 
 	if (!game) {
-		throw error(404, {
+		error(404, {
 			message: 'Not found',
 		})
 	}
