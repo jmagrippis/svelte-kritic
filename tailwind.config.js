@@ -1,4 +1,5 @@
 import forms from '@tailwindcss/forms'
+import containerQueries from '@tailwindcss/container-queries'
 import colors from 'tailwindcss/colors'
 
 const withAlphaValue = (varName) => `hsl(var(--${varName}) / <alpha-value>)`
@@ -31,10 +32,11 @@ const config = {
 			},
 			aspectRatio: {
 				'game-box': '2 / 3',
+				'game-banner': '2.14 / 1',
 			},
 		},
 	},
-	plugins: [forms],
+	plugins: [forms, containerQueries],
 }
 
 export default config

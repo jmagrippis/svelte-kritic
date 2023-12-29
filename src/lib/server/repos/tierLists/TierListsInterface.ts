@@ -2,7 +2,10 @@ export type Platform = 'nintendo' | 'playstation' | 'xbox' | 'pc'
 export type Tier = 'S' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | '?'
 export type TierListGame = {
 	id: number
-	image: string
+	images: {
+		box: string
+		banner: string
+	}
 	name: string
 	platform: Platform
 	startedPlayingAt: string
