@@ -7,6 +7,25 @@ import type {
 	TierListsRepo,
 } from './TierListsInterface'
 
+type AirtableThumbnail = {
+	url: string
+	width: number
+	height: number
+}
+type AirtableAttachment = {
+	id: string
+	width: number
+	height: number
+	url: string
+	filename: string
+	size: number
+	type: string
+	thumbnails: {
+		large: AirtableThumbnail
+		small: AirtableThumbnail
+		full: AirtableThumbnail
+	}
+}
 export type AirtableGame = {
 	OpenCriticId: number
 	Platform: Platform
@@ -18,6 +37,8 @@ export type AirtableGame = {
 	Name: string
 	'Image Box': string
 	'Image Banner': string
+	Box: AirtableAttachment[]
+	Banner: AirtableAttachment[]
 }
 
 export class AirtableApiTierLists implements TierListsRepo {
@@ -30,16 +51,18 @@ export class AirtableApiTierLists implements TierListsRepo {
 		id: airtableGame.OpenCriticId,
 		name: airtableGame.Name,
 		images: {
-			box:
-				airtableGame['Image Box'] ??
-				`https://placehold.co/480x720?text=${encodeURIComponent(
-					airtableGame.Name,
-				)}`,
-			banner:
-				airtableGame['Image Banner'] ??
-				`https://placehold.co/460x215?text=${encodeURIComponent(
-					airtableGame.Name,
-				)}`,
+			box: airtableGame.Box
+				? airtableGame.Box[0].url
+				: airtableGame['Image Box'] ??
+					`https://placehold.co/480x720?text=${encodeURIComponent(
+						airtableGame.Name,
+					)}`,
+			banner: airtableGame.Banner
+				? airtableGame.Banner[0].thumbnails.large.url
+				: airtableGame['Image Banner'] ??
+					`https://placehold.co/600x280?text=${encodeURIComponent(
+						airtableGame.Name,
+					)}`,
 		},
 		platform: airtableGame.Platform,
 		startedPlayingAt: airtableGame['Started Playing At'],
@@ -58,7 +81,7 @@ export class AirtableApiTierLists implements TierListsRepo {
 	async getTierList() {
 		const games: TierListGame[] = []
 		await this.#airtableClient('Games')
-			.select({sort: [{field: 'Started Playing At', direction: 'asc'}]})
+			.select({view: 'Tierlist 2023'})
 			.eachPage((records, fetchNextPage) => {
 				records.forEach((record) => {
 					if (this.#isAirtableGame(record.fields)) {
