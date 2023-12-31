@@ -18,7 +18,7 @@
 				{#each tierWithGames.games as { id, name, images, startedPlayingAt }}
 					<li
 						id={`${id}`}
-						class="game grid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 @container hover:brightness-125 hover:saturate-[75%]"
+						class="game subgrid row-span-3 grid grid-rows-subgrid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 @container hover:brightness-125 hover:saturate-[75%]"
 					>
 						<a href={`/game/${id}`}>
 							<img
@@ -36,12 +36,10 @@
 								height={280}
 							/>
 						</a>
-						<div class="px-4">
-							<h3 class="font-bold">{name}</h3>
-							<p class="italic">
-								First played: {dateFormat.format(new Date(startedPlayingAt))}
-							</p>
-						</div>
+						<h3 class="justify-self-start font-bold">{name}</h3>
+						<p class="italic">
+							First played: {dateFormat.format(new Date(startedPlayingAt))}
+						</p>
 					</li>
 				{/each}
 			</ul>
@@ -55,8 +53,7 @@
 		grid-auto-rows: auto auto auto;
 	}
 
-	.game {
-		grid-row: span 3;
-		grid-template-rows: subgrid;
+	.game > :not(a) {
+		@apply px-4;
 	}
 </style>

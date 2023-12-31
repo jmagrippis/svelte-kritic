@@ -31,9 +31,9 @@
 				<li>
 					<a
 						href="/tierlists/2023"
-						class={$page.url.pathname.startsWith('/about')
+						class={$page.url.pathname.startsWith('/tierlists')
 							? activePageClasses
-							: undefined}>Tier Lists</a
+							: undefined}>tierlists</a
 					>
 				</li>
 				<li>
@@ -41,7 +41,7 @@
 						href="/about"
 						class={$page.url.pathname.startsWith('/about')
 							? activePageClasses
-							: undefined}>About</a
+							: undefined}>about</a
 					>
 				</li>
 			</ul>
