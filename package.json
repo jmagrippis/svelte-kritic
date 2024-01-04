@@ -15,14 +15,14 @@
 	"devDependencies": {
 		"@fontsource-variable/inconsolata": "^5.0.16",
 		"@playwright/test": "^1.40.1",
-		"@sveltejs/adapter-vercel": "^4.0.3",
+		"@sveltejs/adapter-vercel": "^4.0.4",
 		"@sveltejs/enhanced-img": "^0.1.7",
 		"@sveltejs/kit": "^2.0.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.1",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.7",
-		"@typescript-eslint/eslint-plugin": "^6.16.0",
-		"@typescript-eslint/parser": "^6.16.0",
+		"@typescript-eslint/eslint-plugin": "^6.17.0",
+		"@typescript-eslint/parser": "^6.17.0",
 		"@vercel/og": "^0.5.20",
 		"airtable": "^0.12.2",
 		"autoprefixer": "^10.4.16",
@@ -45,7 +45,7 @@
 	"engines": {
 		"node": "18.x"
 	},
-	"packageManager": "pnpm@8.12.0",
+	"packageManager": "pnpm@8.14.0",
 	"volta": {
 		"node": "18.19.0"
 	}

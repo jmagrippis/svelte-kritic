@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Tag from '$lib/components/Tag.svelte'
 	import {dateFormat} from '$lib/dateFormat.js'
 
 	export let data
@@ -15,7 +16,7 @@
 		{#if tierWithGames.games.length > 0}
 			<h2 class="text-3xl font-bold">{tierWithGames.name} Tier</h2>
 			<ul class="breakout games-grid grid grid-flow-dense gap-4">
-				{#each tierWithGames.games as { id, name, images, startedPlayingAt }}
+				{#each tierWithGames.games as { id, name, images, startedPlayingAt, seenCredits, overclocked }}
 					<li
 						id={`${id}`}
 						class="game subgrid row-span-3 grid grid-rows-subgrid gap-4 rounded bg-surface-brand-2/60 pb-4 transition duration-300 @container hover:brightness-125 hover:saturate-[75%]"
@@ -37,9 +38,19 @@
 							/>
 						</a>
 						<h3 class="justify-self-start font-bold">{name}</h3>
-						<p class="italic">
-							First played: {dateFormat.format(new Date(startedPlayingAt))}
-						</p>
+						<div class="flex flex-col gap-2">
+							<p class="italic">
+								First played: {dateFormat.format(new Date(startedPlayingAt))}
+							</p>
+							<div class="flex flex-wrap gap-2">
+								{#if seenCredits}
+									<Tag>rolled credits</Tag>
+								{/if}
+								{#if overclocked}
+									<Tag>overclocked</Tag>
+								{/if}
+							</div>
+						</div>
 					</li>
 				{/each}
 			</ul>
