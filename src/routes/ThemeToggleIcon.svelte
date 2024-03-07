@@ -28,8 +28,6 @@
 </svg>
 
 <style>
-	@import 'open-props/easings';
-
 	svg {
 		--duration: 500ms;
 	}
