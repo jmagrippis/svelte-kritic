@@ -1,0 +1,25 @@
+{
+	// suggested by @N1c0 in the Discord :-)
+	"workbench.editor.customLabels.patterns": {
+		"**/src/hooks.{js,ts}": "universal hooks",
+		"**/src/hooks.server.{js,ts}": "server hooks",
+		"**/src/hooks.client.{js,ts}": "client hooks",
+		"**/src/routes/**/+page.{js,ts}": "${dirname} (page)",
+		"**/src/routes/**/+layout.{js,ts}": "${dirname} (layout)",
+		"**/src/routes/**/+page.server.{js,ts}": "${dirname} (server)",
+		"**/src/routes/**/+layout.server.{js,ts}": "${dirname} (layout.server)",
+		"**/src/routes/**/+server.{js,ts}": "${dirname} (endpoint)",
+		"**/src/routes/**/+page.svelte": "${dirname(1)} ${dirname}",
+		"**/src/routes/**/+layout.svelte": "${dirname} (layout)",
+		"**/src/routes/**/+error.svelte": "${dirname} (error)",
+		"**/src/routes/**/[[]*[]]/+page.{js,ts}": "${dirname(1)}${dirname} (page)",
+		"**/src/routes/**/[[]*[]]/+layout.{js,ts}": "${dirname(1)}${dirname} (layout)",
+		"**/src/routes/**/[[]*[]]/+page.server.{js,ts}": "${dirname(1)}${dirname} (server)",
+		"**/src/routes/**/[[]*[]]/+layout.server.{js,ts}": "${dirname(1)}${dirname} (layout.server)",
+		"**/src/routes/**/[[]*[]]/+server.{js,ts}": "${dirname(1)}${dirname} (endpoint)",
+		"**/src/routes/**/[[]*[]]/+page.svelte": "${dirname(1)} ${dirname}",
+		"**/src/routes/**/[[]*[]]/+layout.svelte": "${dirname(1)} (layout)",
+		"**/src/routes/**/[[]*[]]/+error.svelte": "${dirname(1)} (error)",
+		"**/src/**/[!+]*.svelte": "${filename}"
+	}
+}
